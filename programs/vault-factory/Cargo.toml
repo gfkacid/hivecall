@@ -1,0 +1,21 @@
+[package]
+name = "vault-factory"
+version = "0.1.0"
+description = "HiveCall vault factory (scaffold — see specs/solana_programs_pseudocode.rs)"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "vault_factory"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = "0.31.0"
+anchor-spl = "0.31.0"

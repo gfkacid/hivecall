@@ -1,0 +1,64 @@
+// https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// Idempotent store for Helius / Alchemy (etc.) webhook payloads.
+model ChainEvent {
+  id         String   @id @default(cuid())
+  chain      String
+  dedupeKey  String   @unique
+  source     String
+  payload    Json
+  processed  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([chain, createdAt])
+}
+
+model Vault {
+  id        String   @id @default(cuid())
+  vaultId   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserProfile {
+  id            String   @id @default(cuid())
+  walletAddress String   @unique
+  createdAt     DateTime @default(now())
+}
+
+model Vote {
+  id        String   @id @default(cuid())
+  vaultId   String
+  marketId  String
+  direction String
+  weight    String?
+  payload   Json
+  createdAt DateTime @default(now())
+
+  @@index([vaultId, marketId])
+}
+
+model RelayJob {
+  id        String   @id @default(cuid())
+  kind      String
+  status    String   @default("pending")
+  payload   Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ExecutorState {
+  id              String   @id @default(cuid())
+  vaultId         String   @unique
+  executorAddress String?
+  updatedAt       DateTime @updatedAt
+}

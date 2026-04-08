@@ -1,0 +1,15 @@
+{
+  "name": "hivecall-programs",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Install Anchor CLI and run: anchor test\" && exit 0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "chai": "^4.4.1",
+    "mocha": "^10.4.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.4.5"
+  }
+}

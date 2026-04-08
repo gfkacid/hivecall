@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Environment (keep *.example tracked)
+.env
+.env.local
+.env.*.local
+
+# Backend
+backend/dist/
+
+# Frontend
+frontend/dist/
+
+# Foundry
+contracts/cache/
+contracts/out/
+
+# Rust / Anchor
+programs/target/
+programs/.anchor/
+programs/test-ledger/
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Logs
+*.log

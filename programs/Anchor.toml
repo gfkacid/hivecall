@@ -1,0 +1,34 @@
+[toolchain]
+channel = "1.79.0"
+
+[features]
+resolution = true
+skip-lint = false
+
+[workspace]
+members = ["vault-factory", "native-vault", "staking"]
+
+[programs.localnet]
+vault_factory = "EmPTRDCu8v7FDBo1PTDhDJZk8D1UMrCnKc1WsihPA1zy"
+native_vault = "2Rzwy9iugqWqWz2inGBPMXWH5zgC7sR6Rxtyr5nVeXW8"
+staking = "HW3taPZT4E7YGQEQKvQUCNcTGPsbfPv8mxGTdwFvMSKj"
+
+[programs.devnet]
+vault_factory = "EmPTRDCu8v7FDBo1PTDhDJZk8D1UMrCnKc1WsihPA1zy"
+native_vault = "2Rzwy9iugqWqWz2inGBPMXWH5zgC7sR6Rxtyr5nVeXW8"
+staking = "HW3taPZT4E7YGQEQKvQUCNcTGPsbfPv8mxGTdwFvMSKj"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "npx --yes ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 2000
+shutdown_wait = 2000
+upgradeable = false
